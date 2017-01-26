@@ -1,0 +1,49 @@
+body{
+	padding-top: 40px;
+}
+
+.container{
+	max-width: 1200px;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.anim{
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 100px;
+	height:5px;
+	background-color: lightgrey;
+	position: relative;
+	animation-name: tbar;
+	animation-duration: 4s;
+	animation-direction:  alternate;
+	animation-iteration-count: infinite;
+	animation-timing-function: ease-in-out;
+}
+
+.center{
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/* main.html */
+
+.no-margin{
+	margin: -26px;
+}
+.head{
+	font-family: 'Lato', serif;
+}
+
+
+ 
+@keyframes tbar {
+    0%   { left:-151px; top:0px;}
+    100% { left:154px; top:0px;}
+    
+    
+

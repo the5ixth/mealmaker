@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+
+{% block body %}
+	<div class="container">
+		 <table class="w3-table w3-striped w3-border"> 
+		 	<tr>
+		 		<th>Day 1</th>
+		 		<th>Day 2</th>
+		 		<th>Day 3</th>
+		 		<th>Day 4</th>
+		 		<th>Day 5</th>
+		 		<th>Day 6</th>
+		 		<th>Day 7</th>
+		 	</tr>
+		 	<tr>
+		 		{% for i in range(7) : %}
+		 			{% if meal: %}
+			 			<a href="" >
+			 				<td>{{ meal.name }} </td>
+			 			</a>
+			 		{% else: %}
+			 			<a href="">
+			 				<td>none</td>
+			 			</a>
+			 		{% endif %}
+		 		{% endfor %}
+		 	</tr>
+		 </table>
+	 </div>
+{% endblock %}

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <title>Meal Maker</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Lato">
+
+    <link rel='stylesheet' href="/static/css/custom.css">
+
+   
+    <body>
+    	<ul class="w3-navbar w3-border w3-light-grey w3-top mobile">
+    		<li class="w3-dropdown-click ">
+    			<a onclick="myFunction()" href="javascript:void(0)">
+    				<span class="">Meal Maker</span>
+    				<span class="obj-right mobile-btn"><i class="fa fa-bars "></i></span>
+    			</a>
+				<div id="demo" class="w3-dropdown-content w3-border">
+					<a class="w3-hover-grey" href="">Home</a>
+					<a class="w3-hover-grey" href="">Settings</a>
+					<a class="w3-hover-grey" href="/calendar">Calendar</a>
+					<a class="w3-hover-grey" href="/insert">Insert</a>
+				</div>
+			</li>
+		</ul>
+
+		<ul class="w3-navbar w3-border w3-light-grey w3-top topnav">
+			<li><a class="" href="/">Meal Maker</a></li>
+			<li><a class="w3-hover-grey" href="/">Home</a></li>
+			<li><a class="w3-hover-grey" href="">Settings</a></li>
+			<li><a class="w3-hover-grey" href="/calendar">Calendar</a></li>
+			<li><a class="w3-hover-grey" href="/insert">Insert</a></li>
+		</ul>
+        
+		
+        <!-- !PAGE CONTENT! -->
+        
+
+        {% block body %}
+        {% endblock %}
+
+		
+        <!-- Footer -->
+        <footer class="w3-container w3-padding-64 w3-light-grey w3-center w3-opacity w3-xlarge w3 row" style="margin-top:128px"> 
+        	<div class="w3-col s12 m4 l3 text-left info">
+        	</div>
+        	<div class="w3-col s12 m4 l6 w3-center">
+			</div>
+			</div class="w3-col s12 m4 l3">
+				<a href=""><button class="w3-btn w3-padding-16 w3-large w3-margin-top">Manage</button></a>
+				<a href=""> <button class="w3-btn w3-padding-16 w3-large w3-margin-top">Register</button></a>
+			</div>
+			
+        </footer>
+         
+        <script>        
+        function myFunction() {
+			var x = document.getElementById("demo");
+			if (x.className.indexOf("w3-show") == -1) {
+				x.className += " w3-show";
+			} else { 
+				x.className = x.className.replace(" w3-show", "");
+			}
+		}
+        </script>
+    </body>
+</html>
+

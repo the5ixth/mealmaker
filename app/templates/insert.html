@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% from "macros.html" import render_field %}
+
+
+{% block body %}
+	<div class="container">
+		<div class="w3-card-4 c-card">
+			<div class="w3-container w3-brown">
+			  	<h2>Insert a Meal</h2>
+			</div>
+			<form class="w3-container block-center" method='POST' action='/insert/' enctype="multipart/form-data" style="max-width: 600px;">
+				<dl>
+					{{ form.csrf_token() }}
+					<div class="center">
+						<dd >
+						 	<label for="name">Name: </label> 
+						 	<input id="name" name="name" type="text" value="">
+						</dd>
+						<dd >
+							<label for="instructions">Instructions: </label> 
+							<textarea id="instructions" name="instructions"></textarea>  
+						</dd >
+						{% for i in range(10) %}
+							<dd>
+								<div class="w3-row-padding">
+									<div class="w3-third">
+										<label for="ingrediants-{{ i }}">Ingrediant {{ i }}: </label> 
+										<input class="w3-input w3-border" id="ingrediants-{{ i }}" type="text" placeholder="">
+									</div>
+									<div class="w3-third">
+										<label for="ammounts-{{ i }}">Ammount{{ i }}: </label> 
+										<input class="w3-input w3-border" id="ammounts-{{ i }}" itype="text" placeholder="">
+									</div>
+									<div class="w3-third">
+										<label for="measurements-{{ i }}">Measurement {{ i }}</label>
+										 <select class="w3-select" name="option">
+											 <option value="" id="measurements-{{ i }}" disabled selected>Choose your option</option>
+											 <option value="1">Gallon</option>
+											 <option value="2">Quart</option>
+											 <option value="3">Pint</option>
+											 <option value="4">Cup</option>
+											 <option value="5">Ounces</option>
+											 <option value="6">Fluid Ounces</option>
+											 <option value="7">Liters</option>
+											 <option value="8">Milliliters</option>
+											 <option value="9">Table Spoon</option>
+											 <option value="10">Tea Spoon</option>
+											 <option value="11">Piece</option>
+											 <option value="12">Pound</option>
+											 <option value="13">Gram</option>
+										</select>
+									</div>
+								</div>
+							</dd>
+						{% endfor %}
+						<dd>
+							<label for="submit">Submit</label> 
+							<input id="submit" name="submit" type="submit" value="Submit">	
+						</dd>
+					</div>
+				</dl>
+			</form>
+		</div>
+	</div>
+{% endblock %}
