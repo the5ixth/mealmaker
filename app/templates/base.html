@@ -10,8 +10,9 @@
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Lato">
 
     <link rel='stylesheet' href="/static/css/custom.css">
-
-   
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+       
     <body>
     	<ul class="w3-navbar w3-border w3-light-grey w3-top mobile">
     		<li class="w3-dropdown-click ">
@@ -31,9 +32,16 @@
 		<ul class="w3-navbar w3-border w3-light-grey w3-top topnav">
 			<li><a class="" href="/">Meal Maker</a></li>
 			<li><a class="w3-hover-grey" href="/">Home</a></li>
-			<li><a class="w3-hover-grey" href="">Settings</a></li>
+			<li><a class="w3-hover-grey" href="/settings">Settings</a></li>
 			<li><a class="w3-hover-grey" href="/calendar">Calendar</a></li>
-			<li><a class="w3-hover-grey" href="/insert">Insert</a></li>
+			{% if current_user.authenticated: %}
+				<li><a class="w3-hover-grey" href="/insert">Insert</a></li>
+				<li class="w3-right"><a class=" w3-hover-grey" href="/logout">Logout</a></li>
+				<li class="w3-right"><a class="w3-hover-grey"> Hello {{ current_user.email }}</a></li>
+			{% else: %}
+				<li class="w3-right"><a class=" w3-hover-grey" href="/register">Register</a></li>
+				<li class="w3-right"><a class=" w3-hover-lightgrey" href="/login">Login</a></li>
+			{% endif %}
 		</ul>
         
 		

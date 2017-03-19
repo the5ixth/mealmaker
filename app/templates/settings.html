@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% from "macros.html" import render_field %}
+
+
+{% block body %}
+	<div class="container">
+		<div class="w3-card-4 c-card">
+			<div class="w3-container w3-brown">
+			  	<h2>What kind of meal</h2>
+			</div>
+			<form class="w3-container block-center" method='POST' action='/settings/' enctype="multipart/form-data" >
+				<dl>
+					{{ form.csrf_token() }}
+					<div class="center">
+						{{ render_field(form.days) }}
+						{{ render_field(form.breakfast) }}
+						{{ render_field(form.lunch) }}
+						{{ render_field(form.dinner) }}
+						<input class="w3-btn" id="submit" name="submit" type="submit" value="Submit" style="width: 100%;">	
+					</div>
+				</dl>
+			</form>
+		</div>
+	</div>
+{% endblock %}

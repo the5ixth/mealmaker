@@ -2,6 +2,17 @@ body{
 	padding-top: 40px;
 }
 
+textarea {
+    width: 100%;
+    height: 150px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    resize: none;
+}
+
 .container{
 	max-width: 1200px;
 	display: block;
@@ -29,7 +40,13 @@ body{
 	margin-left: auto;
 	margin-right: auto;
 }
+.centered{
+	text-align: center;
+}
 
+.bg-white{
+	background-color: white;
+}
 /* main.html */
 
 .no-margin{
@@ -39,11 +56,17 @@ body{
 	font-family: 'Lato', serif;
 }
 
+.row1, .row2, .row3, .row4, .row5, .row6, .row7, .row8, .row9{
+	display: none;
+}
 
- 
+	
+
 @keyframes tbar {
     0%   { left:-151px; top:0px;}
     100% { left:154px; top:0px;}
+    
+
     
     
 

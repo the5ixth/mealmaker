@@ -4,4 +4,4 @@ application = create_app("prod")
 
 if __name__ == "__main__":
     app = create_app("dev")
-    app.run(debug=True)
+    app.run( debug=True)

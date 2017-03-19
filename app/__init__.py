@@ -26,4 +26,5 @@ def create_app(config="dev"):
         #db.drop_all()
         db.create_all()
 
+
     return app

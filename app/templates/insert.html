@@ -8,58 +8,93 @@
 			<div class="w3-container w3-brown">
 			  	<h2>Insert a Meal</h2>
 			</div>
-			<form class="w3-container block-center" method='POST' action='/insert/' enctype="multipart/form-data" style="max-width: 600px;">
+			<form class="w3-container block-center" method='POST' action='/insert/' enctype="multipart/form-data" >
 				<dl>
 					{{ form.csrf_token() }}
 					<div class="center">
 						<dd >
-						 	<label for="name">Name: </label> 
-						 	<input id="name" name="name" type="text" value="">
+						 	<label class="w3-label w3-validate" for="name">Name: </label> 
+						 	<input class="w3-input w3-border w3-light-grey" id="name" name="name" type="text" value="" required>
 						</dd>
 						<dd >
-							<label for="instructions">Instructions: </label> 
-							<textarea id="instructions" name="instructions"></textarea>  
+							<label class=" w3-label w3-validate" for="instructions">Instructions: </label> 
+							<textarea id="instructions" name="instructions" required ></textarea>  
 						</dd >
-						{% for i in range(10) %}
+						<div class="w3-row-padding">
+							<div class="w3-col l4 m4 center">
+								<dd>
+									<label for="breakfast">Breakfast: </label> 
+									<input id="breakfast" name="breakfast" type="checkbox" value="y">  
+								</dd>
+							</div>
+							<div class="w3-col l4 m4 center">
+								<dd>
+									<label for="lunch">Lunch: </label> 
+									<input id="lunch" name="lunch" type="checkbox" value="y">
+								</dd>
+							</div>
+							<div class="w3-col l4 m4 center">
+								<dd>
+									<label for="dinner">Dinner: </label> 
+									<input id="dinner" name="dinner" type="checkbox" value="y">
+		  						 </dd>
+		  					</div>
+	  					</div>
+						<div class="w3-row-padding">
 							<dd>
-								<div class="w3-row-padding">
-									<div class="w3-third">
-										<label for="ingrediants-{{ i }}">Ingrediant {{ i }}: </label> 
-										<input class="w3-input w3-border" id="ingrediants-{{ i }}" type="text" placeholder="">
+								{% for i in range(10)%}
+									<div class="w3-row-padding row{{i}}" id="row{{i}}">
+										<div class="w3-col l4 m4">
+											<input class="w3-input w3-border w3-light-grey" id="ingrediants-{{ i }}" name="ingrediants-{{ i }}" type="text" value="" placeholder="Ingrediant">
+										</div>
+									
+										<div class="w3-col l4 m4"> 
+											<input class="w3-input w3-border w3-light-grey w3-validate" id="ammounts-{{ i }}" name="ammounts-{{ i }}" type="text" value="" placeholder="Quantity">
+										</div>
+									
+										<div class="w3-col l3 m3">
+											<select class="w3-select w3-border" id="measurements-{{ i }}" name="measurements-{{ i }}">
+												<option value="" disabled selected>Measurement</option>
+												<option value="Gallon">Gallon</option>
+												<option value="Litre">Litre</option>
+												<option value="Milliliter">Milliliter</option>
+												<option value="Pint">Pint</option>
+												<option value="Cup">Cup</option>
+												<option value="Fluid ounce">Fluid ounce</option>
+												<option value="Pound">Pound</option>
+												<option value="ounce">ounce</option>
+												<option value="Table spoon">Table spoon</option>
+												<option value="Tea spoon">Tea spoon</option>
+												<option value="Inch">Inch</option>
+												<option value="Centimeter">Centimeter</option>
+												<option value="Piece">Piece</option>
+												<option value="Dozen">Dozen</option>
+											</select>
+										</div>
+										<div class="w3-col l1 m1">
+											<button class="w3-btn" id="btn{{ i }}" style="width: 100%; height: 100%;" onclick="" type="button">Add</button>
+										</div>
 									</div>
-									<div class="w3-third">
-										<label for="ammounts-{{ i }}">Ammount{{ i }}: </label> 
-										<input class="w3-input w3-border" id="ammounts-{{ i }}" itype="text" placeholder="">
-									</div>
-									<div class="w3-third">
-										<label for="measurements-{{ i }}">Measurement {{ i }}</label>
-										 <select class="w3-select" name="option">
-											 <option value="" id="measurements-{{ i }}" disabled selected>Choose your option</option>
-											 <option value="1">Gallon</option>
-											 <option value="2">Quart</option>
-											 <option value="3">Pint</option>
-											 <option value="4">Cup</option>
-											 <option value="5">Ounces</option>
-											 <option value="6">Fluid Ounces</option>
-											 <option value="7">Liters</option>
-											 <option value="8">Milliliters</option>
-											 <option value="9">Table Spoon</option>
-											 <option value="10">Tea Spoon</option>
-											 <option value="11">Piece</option>
-											 <option value="12">Pound</option>
-											 <option value="13">Gram</option>
-										</select>
-									</div>
-								</div>
+								{% endfor %}
 							</dd>
-						{% endfor %}
+						</div>
 						<dd>
-							<label for="submit">Submit</label> 
-							<input id="submit" name="submit" type="submit" value="Submit">	
+							<br />
+							<input class="w3-btn" id="submit" name="submit" type="submit" value="Submit" style="width: 100%;">	
 						</dd>
 					</div>
 				</dl>
 			</form>
 		</div>
 	</div>
+	<script>
+	$(document).ready(function(){
+		{% for i in range(10): %}
+			$("#btn{{i}}").click(function(){
+				$("#row{{ i + 1 }}").removeClass("row{{ i + 1}}");
+				$("#btn{{i}}").addClass("row1");
+			});
+		{% endfor %}
+	});
+	</script>
 {% endblock %}

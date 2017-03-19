@@ -3,29 +3,57 @@
 
 {% block body %}
 	<div class="container">
-		 <table class="w3-table w3-striped w3-border"> 
+	<br />
+		<div style="background-color: #f8f8f8;">
+		 	{% for meal_list in meals: %}
+				<div class="w3-row" id="{{meal_list['name']}}">
+					{% if meal_list['data']: %}
+						<div class="w3-col w3-container w3-green centered" style="width:100%"><p>{{meal_list['name']}}</p></div>
+					{% endif %}
+					<div class="center centered">
+						{% for meal in meal_list['data']: %}
+							<div class="w3-col w3-card-4" style="width: calc({{percent}}% - 10px); margin: 5px;">
+								<a href="{{ url_for('main.meal', meal=meal.id ) }}">
+									<header class="w3-container w3-blue">
+										<h4>{{meal.name}}</h4>
+									</header>
+									<div class="w3-container bg-white">
+										<p>Lorem ipsum...</p>
+									</div>
+								</a>
+							</div>
+						{% endfor %}
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+		 <hr/>
+		 <table class="w3-table w3-striped w3-border">
 		 	<tr>
-		 		<th>Day 1</th>
-		 		<th>Day 2</th>
-		 		<th>Day 3</th>
-		 		<th>Day 4</th>
-		 		<th>Day 5</th>
-		 		<th>Day 6</th>
-		 		<th>Day 7</th>
-		 	</tr>
-		 	<tr>
-		 		{% for i in range(7) : %}
-		 			{% if meal: %}
-			 			<a href="" >
-			 				<td>{{ meal.name }} </td>
-			 			</a>
-			 		{% else: %}
-			 			<a href="">
-			 				<td>none</td>
-			 			</a>
-			 		{% endif %}
-		 		{% endfor %}
-		 	</tr>
+		 		<th class="centered">Ingrediant</th>
+		 		<th class="centered">Quantity</th>
+		 		<th class="centered">Unit</th>
+		 	</tr>	
+		 	{% for ing in ingrediants: %}
+		 		<tr>
+		 			<td class="centered">{{ ing['name'] }}</td>
+		 			<td class="centered">{{ ing['ammount'] }}</td>
+		 			<td class="centered">{{ ing['unit'] }}<td>
+		 		</tr>
+		 	{% endfor %}
 		 </table>
+		 <div class="">
+		 	{% if current_user.authenticated: %}
+		 	{% endif %}
+		 </div>
 	 </div>
 {% endblock %}
+
+
+
+
+
+
+
+
+

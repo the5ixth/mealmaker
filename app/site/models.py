@@ -11,23 +11,28 @@ class Meal(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(128))
     instructions = db.Column(db.Text)
+    breakfast = db.Column(db.Boolean, default=False)
+    lunch = db.Column(db.Boolean, default=False)
+    dinner = db.Column(db.Boolean, default=True)
 
-   # amounts = db.relationship(Ammount, backref="meal", lazy="dynamic")
+    ammounts = db.relationship('Ammount', backref='meal')
+
+   #amounts = db.relationship(Ammount, backref="meal", lazy="dynamic")
 
 class Ingrediant(db.Model):
     __tablename__="ingrediant"
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(120), unique=True)
+    name = db.Column(db.String(120))
 
 class Measure(db.Model):
     __tablename__="measure"
     id = db.Column(db.Integer, primary_key=True)
-    unit = db.Column(db.String(120), unique=True)
+    unit = db.Column(db.String(120))
 
 class Ammount(db.Model):
     __tablename__="ammount"
     id = db.Column(db.Integer, primary_key=True)
-    ammount = db.Column(db.Integer)
+    ammount = db.Column(db.Float)
 
     measure_id = db.Column(db.Integer, db.ForeignKey('measure.id'))
     meal_id = db.Column(db.Integer, db.ForeignKey('meals.id'))
@@ -38,6 +43,8 @@ class User(db.Model):
     __tablename__ = 'user'
     email = db.Column(db.String(100), primary_key=True)
     password = db.Column(db.String(100))
+    admin = db.Column(db.Boolean, default=False)
+    saved = db.Column(db.String(100))
     authenticated = db.Column(db.Boolean, default=False)
 
     def is_active(self):
@@ -56,6 +63,8 @@ class User(db.Model):
         """False, as anonymous users aren't supported."""
         return False
 
+    def is_admin(self):
+        return self.admin
 
 
 #meals = Meal.query.get(NUMBER)
