@@ -1,7 +1,7 @@
 import os
 
 class DevConfig:
-    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:lornad@localhost:3306/meal'
+    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:passwd@localhost:3306/meal'
 
     SECRET_KEY = 'key'
 
